@@ -1,0 +1,20 @@
+<app-request-form
+  (requestDataEvent)="compressMessage($event)"
+  (requestStatus)="publishToast($event)"
+></app-request-form>
+<div class="actions">
+  <button [disabled]="results.length === 0" (click)="reset()" type="button">
+    Reset Table
+  </button>
+  <button type="button" [disabled]="results.length === 0" (click)="createRaw()">
+    Generate Raw
+  </button>
+</div>
+<app-result-table [data]="results"></app-result-table>
+<app-toast-message *ngIf="showToast"
+  [message]="toastMessage"
+  [type]="toastType"
+  [options]="toastOptions"
+  (canClose)="closeToast()"
+>
+</app-toast-message>

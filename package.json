@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-ru/prettier": "^14.0.13",
     "@angular/animations": "^16.2.0",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
@@ -33,6 +34,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "2.8.8",
     "typescript": "~5.1.3"
-  }
+  },
+  "prettier": "@angular-ru/prettier"
 }

@@ -1,0 +1,22 @@
+<table *ngIf="data.length > 0">
+  <thead>
+    <tr>
+      <th>
+        Original
+      </th>
+      <th>
+        Comprimido
+      </th>
+      <th>
+        Porcentagem
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of data">
+      <td>{{ result.original }}</td>
+      <td>{{ result.compressed }}</td>
+      <td>{{ result.percentage | percent : '1.0-2' : 'pt-BR' }}</td>
+    </tr>
+  </tbody>
+</table>

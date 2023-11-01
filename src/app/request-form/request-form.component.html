@@ -1,0 +1,59 @@
+<form [formGroup]="requestDataForm" (ngSubmit)="onSubmit()">
+  <h2>API - NeoPro</h2>
+  <div class="form-control">
+    <label for="quantity" title="Quantos registros devem ser recuperados da API"
+      >Quantidade</label
+    >
+    <input
+      id="quantity"
+      #quantity
+      type="number"
+      name="quantity"
+      formControlName="quantity"
+      tabindex="1"
+      autofocus
+    />
+  </div>
+  <div>
+    <button
+      [disabled]="!requestDataForm.valid || isLoading"
+      [ngClass]="isLoading ? 'active' : ''"
+      type="submit"
+    >
+      <span class="material-symbols-outlined" *ngIf="isLoading"> sync </span>
+      <span *ngIf="!isLoading">Solicitar</span>
+    </button>
+  </div>
+  <ng-template [ngIf]="+quantity.value > 10">
+    <span class="message warn"
+      >Recomenda-se números pequenos para não causar lentidão durante a
+      requisição</span
+    >
+  </ng-template>
+  <div
+    *ngIf="
+      requestDataForm.controls['quantity'].invalid &&
+      (requestDataForm.controls['quantity'].dirty ||
+        requestDataForm.controls['quantity'].touched)
+    "
+  >
+    <span
+      class="message error"
+      *ngIf="requestDataForm.controls['quantity'].errors?.['required']"
+    >
+      É necessário informar uma quantia de consultas a serem realizadas
+    </span>
+    <span
+      class="message error"
+      *ngIf="requestDataForm.controls['quantity'].errors?.['min']"
+    >
+      A quantia mínima de consultas é 1
+    </span>
+    <span
+      class="message error"
+      *ngIf="requestDataForm.controls['quantity'].errors?.['pattern']"
+    >
+      Somente números são permitidos
+    </span>
+  </div>
+</form>
